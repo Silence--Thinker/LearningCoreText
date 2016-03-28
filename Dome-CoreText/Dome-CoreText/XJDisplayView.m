@@ -18,7 +18,13 @@
     return self;
 }
 
-
+/**
+ *  翻转左边系，CGContextSetTextMatrix设置文本矩阵，具体还不清楚是什么，但是要给他还原
+ *  CGContextTranslateCTM系列函数的目的就是为了做矩阵的变化的，CTM的意思：current transform matrix
+ *  在CGContextScaleCTM比例函数中特别注意，sy = -1.0可以意思是高度不放大，但是翻转，即以图形的上边为圆心旋转180度
+ *  绘制区域可以使rect、ellipse、arc等图形，也可以自定义path，非常灵活。
+ *
+ */
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
@@ -30,7 +36,7 @@
     CGContextTranslateCTM(context, 0, self.bounds.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);// -1.0导致翻转
     
-    // 3、创建绘制区域
+    // 3、创建绘制区域（边框）
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, self.bounds);
 //    CGPathAddEllipseInRect(path, NULL, self.bounds);// 椭圆
