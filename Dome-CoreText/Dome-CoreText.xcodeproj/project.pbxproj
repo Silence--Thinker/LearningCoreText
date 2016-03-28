@@ -14,6 +14,11 @@
 		E80A2A451CA8D4810092C58F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E80A2A431CA8D4810092C58F /* LaunchScreen.storyboard */; };
 		E80A2A4D1CA8D8700092C58F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E80A2A4C1CA8D8700092C58F /* CoreText.framework */; };
 		E80A2A501CA8DA360092C58F /* XJDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E80A2A4F1CA8DA360092C58F /* XJDisplayView.m */; };
+		E80A2A551CA91F3E0092C58F /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = E80A2A541CA91F3E0092C58F /* UIView+frameAdjust.m */; };
+		E80A2A581CA921580092C58F /* README-demo02.md in Sources */ = {isa = PBXBuildFile; fileRef = E80A2A571CA921580092C58F /* README-demo02.md */; };
+		E80A2A5D1CA922E70092C58F /* CoreTextData.m in Sources */ = {isa = PBXBuildFile; fileRef = E80A2A5C1CA922E70092C58F /* CoreTextData.m */; };
+		E80A2A601CA9230A0092C58F /* XJFrameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E80A2A5F1CA9230A0092C58F /* XJFrameParser.m */; };
+		E80A2A631CA9232C0092C58F /* XJFrameParserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E80A2A621CA9232C0092C58F /* XJFrameParserConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,16 @@
 		E80A2A4C1CA8D8700092C58F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		E80A2A4E1CA8DA360092C58F /* XJDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJDisplayView.h; sourceTree = "<group>"; };
 		E80A2A4F1CA8DA360092C58F /* XJDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJDisplayView.m; sourceTree = "<group>"; };
+		E80A2A531CA91F3E0092C58F /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
+		E80A2A541CA91F3E0092C58F /* UIView+frameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frameAdjust.m"; sourceTree = "<group>"; };
+		E80A2A561CA91FA70092C58F /* Dome-CoreText-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dome-CoreText-Prefix.pch"; sourceTree = "<group>"; };
+		E80A2A571CA921580092C58F /* README-demo02.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "README-demo02.md"; sourceTree = "<group>"; };
+		E80A2A5B1CA922E70092C58F /* CoreTextData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextData.h; sourceTree = "<group>"; };
+		E80A2A5C1CA922E70092C58F /* CoreTextData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextData.m; sourceTree = "<group>"; };
+		E80A2A5E1CA9230A0092C58F /* XJFrameParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFrameParser.h; sourceTree = "<group>"; };
+		E80A2A5F1CA9230A0092C58F /* XJFrameParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFrameParser.m; sourceTree = "<group>"; };
+		E80A2A611CA9232C0092C58F /* XJFrameParserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJFrameParserConfig.h; sourceTree = "<group>"; };
+		E80A2A621CA9232C0092C58F /* XJFrameParserConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJFrameParserConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +78,9 @@
 		E80A2A341CA8D4800092C58F /* Dome-CoreText */ = {
 			isa = PBXGroup;
 			children = (
+				E80A2A591CA9219E0092C58F /* Models */,
+				E80A2A5A1CA9219E0092C58F /* Views */,
+				E80A2A521CA91F030092C58F /* Other */,
 				E80A2A381CA8D4810092C58F /* AppDelegate.h */,
 				E80A2A391CA8D4810092C58F /* AppDelegate.m */,
 				E80A2A3B1CA8D4810092C58F /* ViewController.h */,
@@ -70,6 +88,7 @@
 				E80A2A4E1CA8DA360092C58F /* XJDisplayView.h */,
 				E80A2A4F1CA8DA360092C58F /* XJDisplayView.m */,
 				E80A2A351CA8D4800092C58F /* Supporting Files */,
+				E80A2A571CA921580092C58F /* README-demo02.md */,
 			);
 			path = "Dome-CoreText";
 			sourceTree = "<group>";
@@ -81,8 +100,38 @@
 				E80A2A431CA8D4810092C58F /* LaunchScreen.storyboard */,
 				E80A2A461CA8D4810092C58F /* Info.plist */,
 				E80A2A361CA8D4800092C58F /* main.m */,
+				E80A2A561CA91FA70092C58F /* Dome-CoreText-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E80A2A521CA91F030092C58F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				E80A2A531CA91F3E0092C58F /* UIView+frameAdjust.h */,
+				E80A2A541CA91F3E0092C58F /* UIView+frameAdjust.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		E80A2A591CA9219E0092C58F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E80A2A5B1CA922E70092C58F /* CoreTextData.h */,
+				E80A2A5C1CA922E70092C58F /* CoreTextData.m */,
+				E80A2A5E1CA9230A0092C58F /* XJFrameParser.h */,
+				E80A2A5F1CA9230A0092C58F /* XJFrameParser.m */,
+				E80A2A611CA9232C0092C58F /* XJFrameParserConfig.h */,
+				E80A2A621CA9232C0092C58F /* XJFrameParserConfig.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E80A2A5A1CA9219E0092C58F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E80A2A3D1CA8D4810092C58F /* ViewController.m in Sources */,
+				E80A2A581CA921580092C58F /* README-demo02.md in Sources */,
 				E80A2A501CA8DA360092C58F /* XJDisplayView.m in Sources */,
+				E80A2A5D1CA922E70092C58F /* CoreTextData.m in Sources */,
+				E80A2A631CA9232C0092C58F /* XJFrameParserConfig.m in Sources */,
+				E80A2A601CA9230A0092C58F /* XJFrameParser.m in Sources */,
+				E80A2A551CA91F3E0092C58F /* UIView+frameAdjust.m in Sources */,
 				E80A2A3A1CA8D4810092C58F /* AppDelegate.m in Sources */,
 				E80A2A371CA8D4800092C58F /* main.m in Sources */,
 			);
@@ -201,6 +255,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "Dome-CoreText/Dome-CoreText-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -243,6 +298,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Dome-CoreText/Dome-CoreText-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -300,6 +356,7 @@
 				E80A2A4B1CA8D4810092C58F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

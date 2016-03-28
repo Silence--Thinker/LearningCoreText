@@ -1,0 +1,22 @@
+//
+//  Dome-CoreText-Prefix.pch
+//  Dome-CoreText
+//
+//  Created by Silence on 16/3/28.
+//  Copyright © 2016年 ___SILENCE___. All rights reserved.
+//
+
+#ifndef Dome_CoreText_Prefix_h
+#define Dome_CoreText_Prefix_h
+
+#endif /* Dome_CoreText_Prefix_h */
+
+
+#ifdef __OBJC__
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "CoreText/CoreText.h"
+    #import "UIView+frameAdjust.h"
+
+#endif

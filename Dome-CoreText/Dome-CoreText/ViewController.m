@@ -26,6 +26,9 @@
     [self.view addSubview:displayView];
     self.displayView = displayView;
     
+    
+    // 设置
+    
 }
 
 @end
