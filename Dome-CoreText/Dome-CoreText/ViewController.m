@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "XJDisplayView.h"
+#import "XJFrameParser.h"
 
 @interface ViewController ()
 
@@ -28,7 +29,10 @@
     
     
     // 设置
-    
+    XJFrameParser *parser = [[XJFrameParser alloc] init];
+    XJFrameParserConfig *config = [XJFrameParserConfig new];
+    CoreTextData *data = [XJFrameParser parserContent:@"十风六水一二石天木土" withConfig:config];
+    self.displayView.textData = data;
 }
 
 @end
