@@ -10,4 +10,14 @@
 
 @implementation CoreTextData
 
+- (void)setFrame:(CTFrameRef)frame {
+    if (_frame != frame) {
+        if (_frame) {
+            CFRelease(_frame);
+        }
+        CFRetain(frame);
+        _frame = frame;
+    }
+}
+
 @end

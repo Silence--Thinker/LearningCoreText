@@ -19,48 +19,74 @@
  * 2、__bridge_transfer
  *
  * 3、__bridge_retained
- *
- *
  */
 #import "XJFrameParser.h"
 
 @implementation XJFrameParser
 
-+ (CoreTextData *)parserContent:(NSString *)content withConfig:(XJFrameParserConfig *)config {
++ (CoreTextData *)parserContent:(NSString *)content
+                     withConfig:(XJFrameParserConfig *)config {
+    // 得到 attString
+    NSDictionary *styleDict = [self stringAttributeWith:config];
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:content attributes:styleDict];
+    
+    // 创建 CTFramesetterRef
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
+    
+    // 计算 绘制文字的高度
+    CGSize boundSize = CGSizeMake(config.width, CGFLOAT_MAX);
+    CGSize fitSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, boundSize, NULL);
+    CGFloat textFitHeight = fitSize.height;
+    // 创建 CTFrameRef
+    CTFrameRef frame = [self frameWithFramesetter:framesetter
+                                       withConfig:config
+                                           height:textFitHeight];
+    CoreTextData *textData = [CoreTextData new];
+    textData.frame = frame;
+    
+    CFRelease(frame);
+    CFRelease(framesetter);
+    return textData;
+}
+
++ (NSDictionary *)stringAttributeWith:(XJFrameParserConfig *)config {
+    
+    CFIndex fontSize = config.textFont.pointSize;
+    NSString *fontName = config.textFont.fontName;
+    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)fontName, fontSize, NULL);
+    CGFloat lineSpacing = config.lineSpacing;
+    CTTextAlignment alignment = NSTextAlignmentToCTTextAlignment(config.alignment);
+    CTParagraphStyleSetting stylesetting[] = {
+        { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierAlignment, sizeof(char), &alignment}
+    };
+    const CFIndex count = 4;
+    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(stylesetting, count);
+    
+    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
+    dictM[(id)kCTParagraphStyleAttributeName]       =   (__bridge id)paragraphStyle;
+    dictM[(id)kCTForegroundColorAttributeName]      =   (__bridge id)config.textColor.CGColor;
+    dictM[(id)kCTFontAttributeName]                 =   (__bridge id)fontRef;
+    
+    CFRelease(paragraphStyle);
+    CFRelease(fontRef);
+    return dictM;
+}
+
++ (CTFrameRef)frameWithFramesetter:(CTFramesetterRef)framesetter
+                        withConfig:(XJFrameParserConfig *)config
+                            height:(CGFloat)height {
+    
     CGMutablePathRef path = CGPathCreateMutable();
-    CGRect rect = CGRectMake(0, 0, 300, 300);
+    CGRect rect = CGRectMake(0, 0, config.width, height);
     CGPathAddRect(path, NULL, rect);
     
-    NSMutableAttributedString *attString;
-    CTFramesetterRef framesetter;
-    NSDictionary *styleDict = @{};
-    CFDictionaryRef style = (__bridge CFDictionaryRef)(styleDict);
-    CFRetain(style);
-//    void *p;
-//    id s =  (__bridge id)(p);
-    NSDictionary *s = (__bridge_transfer id )style;
-    CFDictionaryRef *dicttt = (__bridge_retained  void *)styleDict;
-    NSDictionary * dddd;
-//    dddd = (__bridge_retained  id)dicttt;
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
     
-    void *p1;
-    int a = 10;
-    int *p2 = &a;
-    NSLog(@"%p", p1);
-    NSLog(@"%d", (int) *p2);
-    p1 = p2;
-    NSLog(@"%d", *(int *)p1);
-    NSLog(@"%d", (int)* p2);
-    
-    CFBridgingRelease(style);
-    
-    attString = [[NSMutableAttributedString alloc] initWithString:content attributes:nil];
-    framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
-    
-    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, [attString length]), path, NULL);
-    CoreTextData *textData = [[CoreTextData alloc] init];
-    textData.frame = frame;
-    return textData;
+    CFRelease(path);
+    return frame;
 }
 
 @end

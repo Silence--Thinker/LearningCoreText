@@ -11,5 +11,10 @@
 @interface XJFrameParserConfig : NSObject
 
 @property (nonatomic, assign) CGFloat width;
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIFont *textFont;
+@property (nonatomic, assign) NSTextAlignment alignment;
+@property (nonatomic, assign) CGFloat lineSpacing;
 
+@property (nonatomic, copy) NSString *contetText;
 @end

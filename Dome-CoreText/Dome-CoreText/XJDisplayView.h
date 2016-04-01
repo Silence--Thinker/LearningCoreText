@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreTextData.h"
+#import "XJFrameParserConfig.h"
+#import "XJFrameParser.h"
 
 @interface XJDisplayView : UIView
 
-@property (nonatomic, strong) CoreTextData *textData;
+@property (nonatomic, strong) XJFrameParserConfig *parserConfig;
 
+- (void)reDisplay;
 @end

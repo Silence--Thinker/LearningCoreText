@@ -29,10 +29,10 @@
     
     
     // 设置
-    XJFrameParser *parser = [[XJFrameParser alloc] init];
     XJFrameParserConfig *config = [XJFrameParserConfig new];
-    CoreTextData *data = [XJFrameParser parserContent:@"十风六水一二石天木土" withConfig:config];
-    self.displayView.textData = data;
-}
+    config.contetText = @"十风六水一二石天木土@各位男童鞋，为了让卫生间的马桶使用寿命更长，请将用过的卫生纸丢到纸篓里！请将用过的卫生纸丢到纸篓里！请将用过的卫生纸丢到纸篓里！ 重要的事情说三遍！！！";
+    self.displayView.parserConfig = config;
+    [self.displayView reDisplay];
 
+}
 @end
